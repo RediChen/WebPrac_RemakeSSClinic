@@ -1,4 +1,5 @@
-export default function Logo(props) {
+
+export default function Logo(props: {size : string}) {
     //input e.g. : size=64 (in px)
     const address = "/favicon/" + props.size + "px_woFrame.png";
     return (
