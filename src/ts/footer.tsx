@@ -1,3 +1,41 @@
+const TableHead = () => {
+    return (
+        <tr>
+            <th>時段</th>
+            <th>一</th>
+            <th>二</th>
+            <th>三</th>
+            <th>四</th>
+            <th>五</th>
+            <th>六</th>
+        </tr>
+    );
+}
+const TableData = () => {
+    const timeRef = [
+        [1, 0, 1, 1, 0, 1],
+        [1, 1, 1, 1, 1, 0],
+        [1, 1, 1, 1, 1, 0]
+    ];
+    const periodRef = ["上午", "下午", "晚上"];
+    const tdPack = [];
+    let tdToday = [];
+    for (let i = 0; i < periodRef.length; i++) {
+        for (let day = 0; day < timeRef[0].length; day++) {
+            if (timeRef[i][day] === 1)
+                tdToday.push(
+                    <td key={6 * i + day}>
+                        <span>&bull;</span>
+                    </td>
+                );
+            else
+                tdToday.push(<td key={6 * i + day}></td>);
+        }
+        tdPack.push(<tr key={i}>{tdToday}</tr>);
+        tdToday = [];
+    }
+    return <>{tdPack}</>;
+}
 export default function Footer() {
     const imgAdj = {
         display: 'inline-block',
@@ -8,7 +46,7 @@ export default function Footer() {
             {/* id name for use in js */}
             {/* Part 1 : 嵌入Google地圖 */}
             <div id="map">
-                <iframe style={{ border: 0 }} allowFullScreen=""
+                <iframe style={{ border: 0 }}
                     title="心寧診所的周遭地圖" loading="lazy"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14462.7791466998!2d121.3196924!3d25.010485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x130c1e38f756a59!2z5b-D5pm06Ki65omA!5e0!3m2!1szh-TW!2stw!4v1622035578348!5m2!1szh-TW!2stw">
                 </iframe>
@@ -20,42 +58,8 @@ export default function Footer() {
                     <h2 className="title-2">門診時間簡表</h2>
                     <hr className="hr-3" />
                     <table>
-                        <tr>
-                            <th>時段</th>
-                            <th>一</th>
-                            <th>二</th>
-                            <th>三</th>
-                            <th>四</th>
-                            <th>五</th>
-                            <th>六</th>
-                        </tr>
-                        <tr>
-                            <td>上午</td>
-                            <td><span>&bull;</span></td>
-                            <td></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td></td>
-                            <td><span>&bull;</span></td>
-                        </tr>
-                        <tr>
-                            <td>下午</td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>晚上</td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td><span>&bull;</span></td>
-                            <td></td>
-                        </tr>
+                        <TableHead />
+                        <TableData />
                     </table>
                     <button className="btn" data-s2-target="time" data-s2-offset="-4450">詳細資訊</button>
                 </div>
