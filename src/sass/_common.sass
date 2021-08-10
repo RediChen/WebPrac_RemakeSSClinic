@@ -1,0 +1,81 @@
+/* 包含 body bg, logo, hbger, nav, to-the-top  */
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+html, body
+    background-image: url(../assets/images/bgPattern_64px.png)
+    background-repeat: repeat
+    @include rwdFor("desktop")
+        font-size: 18px
+    @include rwdFor("tablet")
+        font-size: 16px
+.logo
+    transition: filter 0.5s
+    &:hover
+        filter: drop-shadow(0 5px 30px rgba($color-24, 0.9))
+    &-64
+        height: 64px
+        width: auto
+nav
+    width: 100%
+    @include rwdFor("desktop")
+        height: 4.5rem
+    @include rwdFor("tablet")
+        height: 4rem
+    position: sticky
+    top: 0
+    z-index: 2
+    background: $color-16
+    border-radius: 0 0 80% 80% / 0 0 55% 55%
+    box-shadow: 0 0 3px $color-shade
+    display: flex
+    flex-flow: row
+    justify-content: space-around
+    .logo
+        transform: translateY(8px)
+    .nav-link
+        $fz: 1.2rem
+        $fz-times: 2
+        height: $fz * $fz-times
+        display: block
+        padding: 5px 1rem
+        border: none
+        border-radius: 30%
+        background-color: transparent
+        transition: 0.5s
+            //* 文字樣式
+        line-height: $fz-times
+        @include font-zh(#{$fz}, 700)
+        @include rwdFor("desktop")
+            color: $color-14
+        @include rwdFor("tablet")
+            color: $color-16
+        // 文字樣式 END
+        //* 配合弧度的高度微調：from 內 to 外
+        @include rwdFor("desktop")
+            &:nth-child(3),
+            &:nth-child(5)
+                transform: translateY(15px)
+            &:nth-child(4n + 2)
+                transform: translateY(12px)
+            &:nth-child(6n + 1)
+                transform: translateY(5px)
+        // 配合弧度的高度微調 END
+        //* hover 等設定
+                position: relative
+        &::after
+            content: ""
+            position: absolute
+            top: 0
+            left: 50%
+            transform: translateX(-50%)
+            width: 0
+            border: 3px solid transparent
+            transition: 0.5s
+        &:hover::after
+            width: 90%
+            border-color: hsl(330, 75%, 77%)
+        &:active
+            filter: brightness(125%)
+        // hover 等設定 END

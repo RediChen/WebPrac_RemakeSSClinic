@@ -1,0 +1,67 @@
+$color-04: #fdfdfd
+$color-05: #ddd
+$color-06: #55555555
+$color-14: hsl(350, 70%, 95%)
+$color-16: hsl(332, 87%, 23%)
+$color-24: LavenderBlush
+$color-25: hsl(329, 100%, 90%)
+$color-26: hsl(330, 80%, 71%)
+$color-shade: rgba(#999, 0.3)
+//============
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;500;700;900&display=swap")
+@mixin font-zh($sz, $wt)
+    //wt is in 200, 300, 500, 700, 900
+    font-family: "Noto Serif TC", serif
+    font-weight: $wt
+    font-size: $sz
+@mixin rwdFor($mode)
+    @if $mode == "desktop"
+        @media screen and (min-width: 1025px)
+            @content
+    @else if $mode == "tablet"
+        @media screen and (max-width: 1024px)
+            @content
+    @else if $mode == "mobile"
+        @media screen and (max-width: 676px)
+            @content
+    @else
+        @error $mode + " 是不存在的裝置代稱！"
+//======================================
+.title-1
+    text-align: center
+    @include font-zh(2rem, 900)
+    @include rwdFor("mobile")
+        @include font-zh(1.5rem, 900)
+        $offset: 15px
+        letter-spacing: $offset
+        text-indent: $offset
+.title-2
+    text-align: center
+    @include font-zh(1.2rem, 700)
+    @include rwdFor("mobile")
+        @include font-zh(1rem, 900)
+.p-text
+    @include font-zh(1rem, 300)
+.hr-1
+    margin: 0.5rem auto 1rem
+    border-color: $color-16
+    @include rwdFor("desktop")
+        max-width: 70%
+    @include rwdFor("tablet")
+        max-width: 80%
+.hr-2
+    //複合式；靠左
+    margin-left: 1rem
+    margin-bottom: 0.5rem
+    & > div
+        width: 15px
+        height: 5px
+        background-color: $color-26
+    hr
+        width: 80%
+        margin: 0
+        border-color: $color-26
+.hr-3
+    margin: 0.5rem auto 1rem
+    max-width: 25%
+    border-color: $color-26
