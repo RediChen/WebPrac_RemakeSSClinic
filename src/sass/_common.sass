@@ -17,6 +17,102 @@ html, body
     &-64
         height: 64px
         width: auto
+#tothetop
+    display: block
+    background-image: url(../assets/icons/iconTothetop.png)
+    background-color: $color-14
+    position: fixed
+    bottom: 15px
+    right: 15px
+    $leng: 32px
+    width: $leng
+    height: $leng
+    border-radius: 50%
+    cursor: pointer
+    transition: box-shadow 0.5s
+    z-index: 999
+
+    &:hover
+        box-shadow: 0 0 15px $color-14
+#nav-toggle
+    $unit_lang: 4px
+    $leng: 8 * $unit_lang
+    @include rwdFor("desktop")
+        display: none
+    @include rwdFor("tablet")
+        display: block
+    &,
+    &::before,
+    &::after
+        position: absolute
+        background-color: $color-04
+    top: (60px - $leng) / 3
+    /* $h-nav-tb */
+    right: 25px
+    //* (HBGer) 1 of 3 : 超橢圓設定
+    // 超橢圓 = {before, &, after}
+    width: $leng
+    height: $leng
+    border-radius: 20%
+
+    @mixin setSquircle($r1, $r2, $s1, $s2)
+        content: ""
+        border-radius: #{$r1} / #{$r2}
+        //r1, r2 若沒有數值化，斜線會被當成除號運算
+        top: $s1
+        bottom: $s1
+        right: $s2
+        left: $s2
+        z-index: -1
+    &::before
+        @include setSquircle(2%, 50%, 17%, -1.5%)
+    &::after
+        @include setSquircle(50%, 2%, -1.5%, 17%)
+    /* 1 of 3 : 超橢圓設定 END */
+    #nav-hbg
+        //* (HBGer) 2 of 3 : 三條線設定
+        // 三 = {before, &, after}
+        &,
+        &::before,
+        &::after
+            height: $unit_lang
+            width: 6 * $unit_lang
+            position: absolute
+            background-color: rgba(black, 0.75)
+            border-radius: 1px
+            content: ""
+        top: 3.5 * $unit_lang //calc(50% - 2px)
+        left: $unit_lang
+        $gap: 2 * $unit_lang
+        &::before
+            top: -$gap
+        &::after
+            top: $gap
+        /* 2 of 3 : 三條線設定 END */
+    //* (HBGer) 3 of 3 : 動畫設定
+    $unit_theta: -45deg
+    #nav-hbg
+        &,
+        &::before,
+        &::after
+            //回復動畫的緩動
+            transition: 300ms
+    &.active
+        #nav-hbg
+            &,
+            &::before,
+            &::after
+                //變成叉叉的動畫緩動
+                transition: 700ms
+            transform: rotate(4 * $unit_theta)
+            background-color: transparent
+            &::before
+                transform: rotate($unit_theta)
+                top: 0 //回到正中央，以形成叉叉
+            &::after
+                transform: rotate(-$unit_theta)
+                top: 0
+        /* 3 of 3 : 動畫設定 END */
 nav
     width: 100%
     @include rwdFor("desktop")

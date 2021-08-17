@@ -40,6 +40,7 @@
         position: absolute
         @include font-zh(5em, 900)
         color: #ff61b0
+        transition: 1s
         @include rwdFor("desktop")
             top: 26vh
             left: 41vw
@@ -53,7 +54,6 @@
             top: 17vh
             @include font-zh(3em, 900)
             word-break: keep-all
-            transition: 1s
         &:hover
             $offset-ls: 1rem
             letter-spacing: $offset-ls

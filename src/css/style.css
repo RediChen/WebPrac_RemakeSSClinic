@@ -120,6 +120,131 @@ html, body {
   width: auto;
 }
 
+#tothetop {
+  display: block;
+  background-image: url(../assets/icons/iconTothetop.png);
+  background-color: #fbe9ec;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 0.5s;
+  transition: -webkit-box-shadow 0.5s;
+  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, -webkit-box-shadow 0.5s;
+  z-index: 999;
+}
+
+#tothetop:hover {
+  -webkit-box-shadow: 0 0 15px #fbe9ec;
+          box-shadow: 0 0 15px #fbe9ec;
+}
+
+#nav-toggle {
+  top: 9.33333px;
+  /* $h-nav-tb */
+  right: 25px;
+  width: 32px;
+  height: 32px;
+  border-radius: 20%;
+  /* 1 of 3 : 超橢圓設定 END */
+}
+
+@media screen and (min-width: 1025px) {
+  #nav-toggle {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #nav-toggle {
+    display: block;
+  }
+}
+
+#nav-toggle, #nav-toggle::before, #nav-toggle::after {
+  position: absolute;
+  background-color: #fdfdfd;
+}
+
+#nav-toggle::before {
+  content: "";
+  border-radius: 2% / 50%;
+  top: 17%;
+  bottom: 17%;
+  right: -1.5%;
+  left: -1.5%;
+  z-index: -1;
+}
+
+#nav-toggle::after {
+  content: "";
+  border-radius: 50% / 2%;
+  top: -1.5%;
+  bottom: -1.5%;
+  right: 17%;
+  left: 17%;
+  z-index: -1;
+}
+
+#nav-toggle #nav-hbg {
+  top: 14px;
+  left: 4px;
+  /* 2 of 3 : 三條線設定 END */
+}
+
+#nav-toggle #nav-hbg, #nav-toggle #nav-hbg::before, #nav-toggle #nav-hbg::after {
+  height: 4px;
+  width: 24px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 1px;
+  content: "";
+}
+
+#nav-toggle #nav-hbg::before {
+  top: -8px;
+}
+
+#nav-toggle #nav-hbg::after {
+  top: 8px;
+}
+
+#nav-toggle #nav-hbg, #nav-toggle #nav-hbg::before, #nav-toggle #nav-hbg::after {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+#nav-toggle.active {
+  /* 3 of 3 : 動畫設定 END */
+}
+
+#nav-toggle.active #nav-hbg {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  background-color: transparent;
+}
+
+#nav-toggle.active #nav-hbg, #nav-toggle.active #nav-hbg::before, #nav-toggle.active #nav-hbg::after {
+  -webkit-transition: 700ms;
+  transition: 700ms;
+}
+
+#nav-toggle.active #nav-hbg::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  top: 0;
+}
+
+#nav-toggle.active #nav-hbg::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 0;
+}
+
 nav {
   width: 100%;
   position: -webkit-sticky;
@@ -293,6 +418,8 @@ nav .nav-link:active {
   font-weight: 900;
   font-size: 5em;
   color: #ff61b0;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 @media screen and (min-width: 1025px) {
@@ -320,8 +447,6 @@ nav .nav-link:active {
     font-weight: 900;
     font-size: 3em;
     word-break: keep-all;
-    -webkit-transition: 1s;
-    transition: 1s;
   }
 }
 
