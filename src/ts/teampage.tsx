@@ -1,10 +1,10 @@
-import { dataTeam } from "./dataTeam.js"
-import React, { useState } from "react";
+import { dataTeam } from "./dataTeam"
+import { useState } from "react";
 
 // 資訊面板
-function CardTitle(nth) {
-    const memberName = dataTeam[nth]["name"],
-        memberImg = dataTeam[nth]["imgAddress"];
+const CardTitle = (nth: number) => {
+    const memberName = dataTeam[nth]["name"];
+    const memberImg = dataTeam[nth]["imgAddress"];
     return (
         <>
             <img src={memberImg} alt={memberName} title={memberName} />
@@ -12,30 +12,32 @@ function CardTitle(nth) {
         </>
     );
 }
-function CardContent(nth) {
+function CardContent(nth: number) {
     //* 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
     const [
         memberDegree,
         memberExperience,
         memberMajor,
         memberSpecialty,
-    ] = [[], [], [], []];
+    ] = [[], [], [], []] as JSX.Element[][];
     const dataMap = {
         "學歷": memberDegree,
         "經歷": memberExperience,
         "主治": memberMajor,
         "專長": memberSpecialty
-    };
+    } as {[index : string] : JSX.Element[]};
     const member4in1 = [];
-
     for (let key in dataMap) {
+
         // step 1 : 有內容才渲染
         if (!dataTeam[nth][key]) continue;
         // step 2 : 將所有條目條列成 li
-        for (let i in dataTeam[nth][key]) {
-            dataMap[key].push(
-                <li>{dataTeam[nth][key][i]}</li>
-            );
+        else {
+            for (let i in dataTeam[nth][key] as string[]) {
+                dataMap[key].push(
+                    <li>{dataTeam[nth][key]?.[i]}</li>
+                );
+            }
         }
         // step 3 : 將內容拼進上下文
         member4in1.push(
@@ -74,13 +76,17 @@ function CardContent(nth) {
 }
 // 主元件
 function TeamPage() {
-    let stateInit = new Array(dataTeam.length);
+    let stateInit: boolean[] = new Array(dataTeam.length);
     stateInit.fill(false);
     const [btnStates, SetBtnStates] = useState(stateInit);
     const [memberIndex, setMemberIndex] = useState(0);
-    function handleClick(i) {
+    function handleClick(i: number) {
         SetBtnStates(stateInit);
-        SetBtnStates(btnStates => btnStates[i] = !btnStates[i]);
+        SetBtnStates(prevStates => {
+            const temp = prevStates;
+            temp[i] = !temp[i];
+            return temp;
+        });
         setMemberIndex(i);
     }
     // 按鈕面板

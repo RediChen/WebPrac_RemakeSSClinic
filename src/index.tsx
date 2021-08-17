@@ -1,17 +1,17 @@
 // 套件
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 
 /* Nav, Hbger & tothetop */
-import Nav from "./ts/common.js";
+import Nav from "./ts/common";
 /* 首頁頁面 */
-import HomePage from "./ts/homepage.js";
+import HomePage from "./ts/homepage";
 /* 簡介頁面 */
-import IntroPage from "./ts/intropage.js";
+import IntroPage from "./ts/intropage";
 /* 團隊頁面 */
-import TeamPage from "./ts/teampage.js";
+import TeamPage from "./ts/teampage";
 /* Footer */
-import Footer from "./ts/footer.js";
+import Footer from "./ts/footer";
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
 // css & js
 import './css/style.css';
@@ -26,17 +26,14 @@ import './css/style.css';
 // }
 
 //* 最終組裝 */
-const BigPicture : FunctionComponent = () => {
-    return (
-        <>
-            <Nav />
-            <HomePage />
-            <IntroPage />
-            <TeamPage />
-            <Footer />
-        </>
-    );
-}
+const BigPicture: FunctionComponent = () =>
+    <>
+        <Nav />
+        <HomePage />
+        <IntroPage />
+        <TeamPage />
+        <Footer />
+    </>
 //* 最終渲染區 */
 ReactDOM.render(
     <BigPicture />,
