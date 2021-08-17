@@ -13,7 +13,7 @@ const CardTitle = (nth: number) => {
     );
 }
 function CardContent(nth: number) {
-    //* 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
+    //* 1/2 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
     const [
         memberDegree,
         memberExperience,
@@ -53,7 +53,7 @@ function CardContent(nth: number) {
             </div>
         );
     }
-    //* 包裝「醫師的叮嚀」的文本
+    //* 2/2 包裝「醫師的叮嚀」的文本
     const memberRemind = [], keyWordRemind = "醫師的叮嚀";
     if (dataTeam[nth][keyWordRemind]) {
         memberRemind.push(
@@ -80,17 +80,17 @@ function TeamPage() {
     stateInit.fill(false);
     const [btnStates, SetBtnStates] = useState(stateInit);
     const [memberIndex, setMemberIndex] = useState(0);
-    function handleClick(i: number) {
+    function handleClick(nth: number) {
         SetBtnStates(stateInit);
         SetBtnStates(prevStates => {
-            const temp = prevStates;
-            temp[i] = !temp[i];
-            return temp;
+            const state = prevStates;
+            state[nth] = !state[nth];
+            return state;
         });
-        setMemberIndex(i);
+        setMemberIndex(nth);
     }
     // 按鈕面板
-    // 此函數獨立出去會有技術上的障礙
+    // 此函數獨立出去會有技術上的障礙: needs hooks
     function renderTeamBtns() {
         const pack = [];
         for (let nth = 0; nth < dataTeam.length; nth++) {
@@ -100,10 +100,9 @@ function TeamPage() {
                 <br />,
                 dataTeam[nth].name.slice(3)
             );
+            const className = btnStates[nth] ? "team-btn team-btn-active" : "team-btn";
             pack.push(
-                <div onClick={() => handleClick(nth)}
-                    className={btnStates[nth] ? "team-btn team-btn-active" : "team-btn"}
-                >
+                <div onClick={() => handleClick(nth)} className={className}>
                     <h2>{name}</h2>
                 </div>
             );
