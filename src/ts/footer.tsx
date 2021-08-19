@@ -74,7 +74,7 @@ const Traffic = () => {
         <dl className="p-text">
             <dt>
                 <img src={iconTel} alt="心晴診所的電話號碼" />
-                電話
+                電話：
                 <a href="tel:+886-3-3467895">(03) 346-7895</a>
             </dt>
             <dt>
@@ -87,7 +87,7 @@ const Traffic = () => {
             </dt>
             <dd>
                 <img src={iconBus} alt="搭車前往心晴診所" style={{ width: 32 + 'px', height: 32 + 'px' }} />
-                大眾交通：搭乘105、168、209、602、707、9069、免費公車環狀線紅‧藍線，在「新光三越」站下車
+                大眾交通：搭乘105、168、209、602、707、9069、免費公車環狀線紅‧藍線，在「新光三越」站下車。
             </dd>
             <dd>
                 <img src={iconCar} alt="開車前往心晴診所" />
