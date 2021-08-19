@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import Logo from "./logo"
-type HbgerProps = { onClick: () => void }
-const Hbger: React.FC<HbgerProps> = ({ onClick }) =>
+
+type BtnProps = { onClick: () => void }
+const ToTheTop: React.FC<BtnProps> = ({onClick}) =>
+    <button id="tothetop" onClick={onClick}></button>
+const Hbger: React.FC<BtnProps> = ({ onClick }) =>
     <button id="nav-toggle" onClick={onClick}>
         <div id="nav-hbg"></div>
     </button>
+
 interface INavLinkProps {
     index: number
     text: string
@@ -53,6 +57,7 @@ const Nav: React.FC = () => {
     // 渲染
     return (
         <>
+            <ToTheTop onClick={handleHbgerClick} />
             <Hbger onClick={handleHbgerClick} />
             <nav>
                 {renderAs(0, 2)}
