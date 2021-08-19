@@ -24,7 +24,7 @@
         box-shadow: 0 0 40px 10px $color-24 inset
         @include rwdFor("desktop")
             top: 34vh
-            left: 40vw
+            left: 40%
         @include rwdFor("tablet")
             top: 25vh
             left: 52%
@@ -41,6 +41,7 @@
         @include font-zh(5em, 900)
         color: #ff61b0
         transition: 1s
+        cursor: default
         @include rwdFor("desktop")
             top: 26vh
             left: 41vw
@@ -76,11 +77,14 @@
 
         @include rwdFor("desktop")
             top: 46vh
-            right: 0
+            right: -10%
             transform: translateX($offset-ls)
             padding-left: 3vw
             padding-right: 15vw
             text-shadow: 3px -3px 3px #fff
+            transition: 4s
+            &:hover
+                right: 0
         @include rwdFor("tablet")
             width: calc(100%)
             top: 44vh
