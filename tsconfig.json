@@ -19,9 +19,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./"
   },
   "include": [
-    "src"
+    "**/*.ts",
+    "**/*.tsx",
+    "import-img.d.ts",
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
