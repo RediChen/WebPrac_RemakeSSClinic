@@ -3,13 +3,15 @@ import { useState } from "react";
 import Logo from "./logo"
 
 type BtnProps = { onClick: () => void }
+//* 回到最上按鈕
 const ToTheTop: React.FC<BtnProps> = ({onClick}) =>
     <button id="tothetop" onClick={onClick}></button>
+//* 漢堡包按鈕
 const Hbger: React.FC<BtnProps> = ({ onClick }) =>
     <button id="nav-toggle" onClick={onClick}>
         <div id="nav-hbg"></div>
     </button>
-
+//* 導覽列＆元件組裝
 interface INavLinkProps {
     index: number
     text: string

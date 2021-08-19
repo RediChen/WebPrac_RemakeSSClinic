@@ -114,7 +114,7 @@ const Copyright = () =>
     <div>
         <p className="p-text">心晴診所 版權所有 &copy; Copyright 2021. <wbr />All Rights Reserved.</p>
     </div>
-//* 最後組裝
+//* 元件組裝
 export default function Footer() {
     /* id name for 捲動前往功能 */
     return (
