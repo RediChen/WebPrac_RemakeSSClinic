@@ -1,93 +1,77 @@
-// import Header2 from "./Components/header2"
-import {H1, H2} from "./Components/headers"
+import React from "react";
+import { H1, H2 } from "./Components/headers"
 // Part I : 標題 using H1
 //* Part II : 時間表
-const TimeTable = () =>
-    <div id="time-table">
-        {/* ROW 0 */}
-        <div></div>
-        <div>一</div>
-        <div>二</div>
-        <div>三</div>
-        <div>四</div>
-        <div>五</div>
-        <div>六</div>
-        {/* <!-- * ROW 1 --> */}
-        <div>09:00<br />上午<br />12:00</div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
+const colored = [
+    { backgroundColor: "#e6e6e6" },
+    { backgroundColor: "#fafad1" },
+    { backgroundColor: "#d1eefa" },
+    { backgroundColor: "#fccfd6" }
+] as React.CSSProperties[];
+/* about colored :看診組合的顏色代碼
+0 -> closed
+1 -> children
+2 -> adult
+3 -> natural */
+const TableItem = (colorCode: number[], isShort: boolean) => {
+    const numGrid = colorCode.length;
+    const pack = [] as JSX.Element[];
+    for (let i = 0; i < numGrid; i++) {
+        pack.push(
+            <div style={colored[colorCode[i]]}></div>
+        );
+    }
+    return (
+        <div>
+            {pack}
+            {isShort ? <div style={colored[0]}></div> : <></>}
         </div>
-        <div className="tt-1col">
-            <div className="tt-cols tt-closed"></div>
+    );
+}
+// 當日的看診組合  -->長遠目標：後台更新班表的API
+const timeSheet: number[][][] = [
+    [[1, 2], [0], [1, 2], [2], [0], [3, 2]],
+    [[1, 2], [2], [1, 2], [3, 2], [3, 2], [0]],
+    [[1, 2], [1, 2], [1, 2], [3, 2], [1, 2, 3], [0]]
+];
+// 當日是否提早休息-->長遠目標：後台更新班表的API
+const shortSheet: boolean[][] = [
+    [false, false, false, false, false, false],
+    [false, true, false, false, false, false],
+    [false, false, false, false, true, false],
+];
+const TimeTable = () => {
+    const row = [[], [], [], []] as JSX.Element[][];
+    row[0].push(
+        <>
+            <div></div>
+            <div>一</div>
+            <div>二</div>
+            <div>三</div>
+            <div>四</div>
+            <div>五</div>
+            <div>六</div>
+        </>
+    );
+    for (let i = 1; i <= 3; i++) {
+        for (let j = 0; j < timeSheet[i].length; j++) {
+            row[i].push(
+                TableItem(timeSheet[i][j], shortSheet[i][j])
+            )
+        }
+    }
+    return (
+        <div id="time-table">
+            {row[0]}
+            <div>09:00<br />上午<br />12:00</div>
+            {row[1]}
+            <div>14:30<br />下午<br />17:30</div>
+            {row[2]}
+            <div>18:00<br />晚上<br />21:00</div>
+            {row[3]}
         </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-1col">
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-1col">
-            <div className="tt-cols tt-closed"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-nature"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        {/* <!-- * ROW 2 --> */}
-        <div>14:30<br />下午<br />17:30</div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-1col tt-shorter">
-            <div className="tt-cols tt-adult"></div>
-            <div className="tt-cols tt-closed">~17:00</div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-nature"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-nature"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-1col">
-            <div className="tt-cols tt-closed"></div>
-        </div>
-        {/* <!-- * ROW 3 --> */}
-        <div>18:00<br />晚上<br />21:00</div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-2col">
-            <div className="tt-cols tt-nature"></div>
-            <div className="tt-cols tt-adult"></div>
-        </div>
-        <div className="tt-3col tt-shorter">
-            <div className="tt-cols tt-nature"></div>
-            <div className="tt-cols tt-children"></div>
-            <div className="tt-cols tt-adult"></div>
-            <div className="tt-cols tt-closed">~20:00</div>
-        </div>
-        <div className="tt-1col">
-            <div className="tt-cols tt-closed"></div>
-        </div>
-    </div>
+    );
+}
 //* Part III : 時間表圖例
 const TableEg = () =>
     <div id="table-eg">
@@ -109,9 +93,9 @@ const RegisterNote = () =>
     <div id="register-note">
         <H2 text="門診小叮嚀" />
         <div className="note-btn-box">
-            <a className="note-btns" onClick="showPage(0)">初次看診</a>
+            {/* <a className="note-btns" onClick="showPage(0)">初次看診</a>
             <a className="note-btns" onClick="showPage(1)">今日看診</a>
-            <a className="note-btns" onClick="showPage(2)">之後看診</a>
+            <a className="note-btns" onClick="showPage(2)">之後看診</a> */}
         </div>
         <div>
             <div className="note-pages">
