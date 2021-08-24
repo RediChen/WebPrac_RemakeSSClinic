@@ -5,13 +5,13 @@ import ReactDOM from "react-dom";
 /* Nav, Hbger & tothetop */
 import Nav from "./ts/common";
 /* 首頁頁面 */
-import HomePage from "./ts/homepage";
+import HomePage from "./ts/homePage";
 /* 簡介頁面 */
-import IntroPage from "./ts/intropage";
+import IntroPage from "./ts/introPage";
 /* 團隊頁面 */
-import TeamPage from "./ts/teampage";
+import TeamPage from "./ts/teamPage";
 /* 團隊頁面 */
-import TimePage from "./ts/timepage";
+import TimePage from "./ts/timePage";
 /* Footer */
 import Footer from "./ts/footer";
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
