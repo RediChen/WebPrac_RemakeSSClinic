@@ -1,6 +1,6 @@
 import { dataTeam } from "./dataTeam"
 import { useState } from "react";
-import { H1 } from "./Components/headers";
+import { H1, H3 } from "./Components/headers";
 
 // 資訊面板
 const CardTitle = (nth: number) => {
@@ -14,56 +14,33 @@ const CardTitle = (nth: number) => {
     );
 }
 function CardContent(nth: number) {
-    //* Part 1/2 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
-    const [
-        memberDegree,
-        memberExperience,
-        memberMajor,
-        memberSpecialty,
-    ] = [[], [], [], []] as JSX.Element[][];
-    const dataMap = {
-        "學歷": memberDegree,
-        "經歷": memberExperience,
-        "主治": memberMajor,
-        "專長": memberSpecialty
-    } as {[index : string] : JSX.Element[]};
-    const member4in1 = [];
-    for (let key in dataMap) {
-
+    // Part 1/2 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
+    const titleList = ["學歷", "經歷", "主治", "專長"];
+    const member4in1 = [] as JSX.Element[];
+    for (let title of titleList) {
+        let liPack = [] as JSX.Element[];
         // step 1 : 有內容才渲染
-        if (!dataTeam[nth][key]) continue;
+        if (!dataTeam[nth][title]) continue;
         // step 2 : 將所有條目條列成 li
-        else {
-            for (let i in dataTeam[nth][key] as string[]) {
-                dataMap[key].push(
-                    <li>{dataTeam[nth][key]?.[i]}</li>
-                );
-            }
+        for (let entry of dataTeam[nth][title] as string[]) {
+            liPack.push( <li>{entry}</li> );
         }
         // step 3 : 將內容拼進上下文
         member4in1.push(
             <div className="team-sub-card">
-                <h3>{key}</h3>
-                <div className="hr-2">
-                    <div></div>
-                    <hr />
-                </div>
-                <ul className="p-text">
-                    {dataMap[key]}
-                </ul>
+                <H3 text={title} />
+                <ul className="p-text">{liPack}</ul>
             </div>
         );
+        // step 4 : 重複步驟直到輸出完畢
+        liPack = [];
     }
-    //* Part 2/2 包裝「醫師的叮嚀」的文本
+    // Part 2/2 包裝「醫師的叮嚀」的文本
     const memberRemind = [], keyWordRemind = "醫師的叮嚀";
     if (dataTeam[nth][keyWordRemind]) {
         memberRemind.push(
             <div className="team-sub-card">
-                <h3>{keyWordRemind}</h3>
-                <div className="hr-2">
-                    <div></div>
-                    <hr />
-                </div>
+                <H3 text={keyWordRemind} />
                 <p className="p-text">{dataTeam[nth][keyWordRemind]}</p>
             </div>
         );
