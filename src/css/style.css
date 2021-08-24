@@ -936,6 +936,241 @@ nav .nav-link:active {
   line-height: 2.5;
 }
 
+#time-table {
+  margin: 80px auto 30px;
+  text-align: center;
+  /* $leng 必須輸入偶數 */
+  width: 710px;
+  height: 380px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 50px (1fr)[6];
+      grid-template-columns: 50px repeat(6, 1fr);
+}
+
+#time-table > div:nth-child(n + 2) {
+  border: 1px solid #55555555;
+  -webkit-box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+          box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+  overflow: hidden;
+}
+
+#time-table > div:first-child {
+  width: 48px;
+  height: 48px;
+}
+
+#time-table > div:nth-child(-n + 7):not(:first-child) {
+  width: 98px;
+  height: 48px;
+  line-height: 48px;
+  background-color: #ffffff88;
+}
+
+#time-table > div:nth-child(7n + 8) {
+  width: 48px;
+  height: 98px;
+  background-color: #ffffff88;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#time-table > div:nth-child(n + 8):not(:nth-child(7n + 8)) {
+  width: 98px;
+  height: 98px;
+}
+
+@media screen and (min-width: 1025px) {
+  #time-table {
+    /* $leng 必須輸入偶數 */
+    width: 710px;
+    height: 380px;
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 10px;
+    -ms-grid-columns: 50px (1fr)[6];
+        grid-template-columns: 50px repeat(6, 1fr);
+  }
+  #time-table > div:nth-child(n + 2) {
+    border: 1px solid #55555555;
+    -webkit-box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+            box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+    overflow: hidden;
+  }
+  #time-table > div:first-child {
+    width: 48px;
+    height: 48px;
+  }
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    width: 98px;
+    height: 48px;
+    line-height: 48px;
+    background-color: #ffffff88;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    width: 48px;
+    height: 98px;
+    background-color: #ffffff88;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #time-table > div:nth-child(n + 8):not(:nth-child(7n + 8)) {
+    width: 98px;
+    height: 98px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #time-table {
+    /* $leng 必須輸入偶數 */
+    width: 568px;
+    height: 304px;
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 8px;
+    -ms-grid-columns: 40px (1fr)[6];
+        grid-template-columns: 40px repeat(6, 1fr);
+  }
+  #time-table > div:nth-child(n + 2) {
+    border: 1px solid #55555555;
+    -webkit-box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+            box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+    overflow: hidden;
+  }
+  #time-table > div:first-child {
+    width: 38px;
+    height: 38px;
+  }
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    width: 78px;
+    height: 38px;
+    line-height: 38px;
+    background-color: #ffffff88;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    width: 38px;
+    height: 78px;
+    background-color: #ffffff88;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #time-table > div:nth-child(n + 8):not(:nth-child(7n + 8)) {
+    width: 78px;
+    height: 78px;
+  }
+}
+
+@media screen and (max-width: 676px) {
+  #time-table {
+    /* $leng 必須輸入偶數 */
+    width: 361px;
+    height: 193px;
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 6px;
+    -ms-grid-columns: 25px (1fr)[6];
+        grid-template-columns: 25px repeat(6, 1fr);
+  }
+  #time-table > div:nth-child(n + 2) {
+    border: 1px solid #55555555;
+    -webkit-box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+            box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
+    overflow: hidden;
+  }
+  #time-table > div:first-child {
+    width: 23px;
+    height: 23px;
+  }
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    width: 48px;
+    height: 23px;
+    line-height: 23px;
+    background-color: #ffffff88;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    width: 23px;
+    height: 48px;
+    background-color: #ffffff88;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #time-table > div:nth-child(n + 8):not(:nth-child(7n + 8)) {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 300;
+    font-size: 1em;
+  }
+  #time-table .tt-closed {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    font-size: 0.8em;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 300;
+    font-size: 0.8em;
+  }
+  #time-table .tt-closed {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 676px) {
+  #time-table > div:nth-child(-n + 7):not(:first-child) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    font-size: 0.8em;
+  }
+  #time-table > div:nth-child(7n + 8) {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 300;
+    font-size: 10px;
+  }
+  #time-table .tt-closed {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 0.8em;
+  }
+}
+
 footer {
   min-height: 100vh;
   margin-top: 50px;
