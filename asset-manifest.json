@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/WD_prac21_RemakeByReactTS/static/css/main.866b8b88.chunk.css",
+    "main.js": "/WD_prac21_RemakeByReactTS/static/js/main.397cc407.chunk.js",
+    "main.js.map": "/WD_prac21_RemakeByReactTS/static/js/main.397cc407.chunk.js.map",
+    "runtime-main.js": "/WD_prac21_RemakeByReactTS/static/js/runtime-main.54afa1c6.js",
+    "runtime-main.js.map": "/WD_prac21_RemakeByReactTS/static/js/runtime-main.54afa1c6.js.map",
+    "static/js/2.2953ed4a.chunk.js": "/WD_prac21_RemakeByReactTS/static/js/2.2953ed4a.chunk.js",
+    "static/js/2.2953ed4a.chunk.js.map": "/WD_prac21_RemakeByReactTS/static/js/2.2953ed4a.chunk.js.map",
+    "index.html": "/WD_prac21_RemakeByReactTS/index.html",
+    "static/css/main.866b8b88.chunk.css.map": "/WD_prac21_RemakeByReactTS/static/css/main.866b8b88.chunk.css.map",
+    "static/js/2.2953ed4a.chunk.js.LICENSE.txt": "/WD_prac21_RemakeByReactTS/static/js/2.2953ed4a.chunk.js.LICENSE.txt",
+    "static/js/main.397cc407.chunk.js.LICENSE.txt": "/WD_prac21_RemakeByReactTS/static/js/main.397cc407.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/WD_prac21_RemakeByReactTS/static/media/Homepage2tablet.ef033ad8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54afa1c6.js",
+    "static/js/2.2953ed4a.chunk.js",
+    "static/css/main.866b8b88.chunk.css",
+    "static/js/main.397cc407.chunk.js"
+  ]
+}
