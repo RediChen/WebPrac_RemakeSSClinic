@@ -10,6 +10,8 @@ import HomePage from "./ts/homepage";
 import IntroPage from "./ts/intropage";
 /* 團隊頁面 */
 import TeamPage from "./ts/teampage";
+/* 團隊頁面 */
+import TimePage from "./ts/timepage";
 /* Footer */
 import Footer from "./ts/footer";
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -32,6 +34,7 @@ const BigPicture: FunctionComponent = () =>
         <HomePage />
         <IntroPage />
         <TeamPage />
+        <TimePage />
         <Footer />
     </>
 //* 最終渲染區 */
