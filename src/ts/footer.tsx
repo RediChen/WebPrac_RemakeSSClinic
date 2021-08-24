@@ -1,3 +1,4 @@
+import { H2 } from "./Components/headers"
 import iconTel from "src/assets/icons/iconTel.png"
 import iconAdr from "src/assets/icons/iconAdr.png"
 import iconTraffic from "src/assets/icons/iconTraffic.png"
@@ -27,20 +28,21 @@ const TableHead = () =>
         <th>六</th>
     </tr>
 const TableData = () => {
+    // timeRef : 有門診時段的簡表 -->待連結：後台更新班表的API
+    //==== true -> 有門診，反之亦然
     const timeRef = [
-        [1, 0, 1, 1, 0, 1],
-        [1, 1, 1, 1, 1, 0],
-        [1, 1, 1, 1, 1, 0]
+        [true, false, true, true, false, true],
+        [true, true, true, true, true, false],
+        [true, true, true, true, true, false]
     ];
     const periodRef = ["上午", "下午", "晚上"];
     const tdPack = [] as jsxPack;
     let tdToday = [] as jsxPack;
+    // row = i /==/ col = day
     for (let i = 0; i < periodRef.length; i++) {
-        tdToday.push(
-            <td>{periodRef[i]}</td>
-        );
+        tdToday.push( <td>{periodRef[i]}</td> );
         for (let day = 0; day < timeRef[0].length; day++) {
-            if (timeRef[i][day] === 1) {
+            if (timeRef[i][day]) {
                 tdToday.push(
                     <td key={6 * i + day}>
                         <span>&bull;</span>
@@ -56,8 +58,7 @@ const TableData = () => {
 }
 const TimeTable = () =>
     <div id="time-footer">
-        <h2 className="title-2">門診時間簡表</h2>
-        <hr className="hr-3" />
+        <H2 text="門診時間簡表" />
         <table>
             <TableHead />
             <TableData />
@@ -68,7 +69,7 @@ const TimeTable = () =>
 const Traffic = () => {
     const imgAdj = {
         display: 'inline-block',
-        transform: `rotate(-90deg)`,
+        transform: 'rotate(-90deg)',
     }
     return (
         <dl className="p-text">
@@ -99,7 +100,7 @@ const Traffic = () => {
 //* Part 4 : 友善連結
 const FriendLink = () =>
     <div id="friend-link">
-        <a href="http://peacefulmindclinic.com/" target="_blank" rel="noopener">
+        <a href="http://peacefulmindclinic.com/" target="blank" rel="noopener">
             <img src={friendLink1} alt="心寧診所" title="前往心寧診所網站" />
         </a>
         <button data-s2-target="home">

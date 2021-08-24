@@ -54,9 +54,13 @@ function CardContent(nth: number) {
 }
 // 主元件
 function TeamPage() {
-    let stateInit: boolean[] = new Array(dataTeam.length);
-    stateInit.fill(false);
+    //* 按鈕面板 */
+    //==== btnStates : 卡片是否顯示的狀態
+    //預設顯示由 memberIndex 決定
+    let stateInit: boolean[] = [];
+    stateInit.fill(false,0, dataTeam.length-1);
     const [btnStates, SetBtnStates] = useState(stateInit);
+    //==== memberIndex : 在顯示狀態的卡片號碼
     const [memberIndex, setMemberIndex] = useState(0);
     function handleClick(nth: number) {
         SetBtnStates(stateInit);
@@ -67,8 +71,6 @@ function TeamPage() {
         });
         setMemberIndex(nth);
     }
-    // 按鈕面板
-    // 此函數獨立出去會有技術上的障礙
     function renderTeamBtns() {
         const pack = [];
         for (let nth = 0; nth < dataTeam.length; nth++) {
@@ -102,5 +104,4 @@ function TeamPage() {
         </section>
     );
 }
-
 export default TeamPage;

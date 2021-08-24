@@ -3,16 +3,16 @@
     Hbger: 漢堡包按鈕
     Nav: 導覽列
 */ 
-import React from "react";
+import {FC} from "react";
 import { useState } from "react";
 import Logo from "./Components/logo"
 
 type BtnProps = { onClick: () => void }
 //* 回到最上按鈕
-const ToTheTop: React.FC<BtnProps> = ({onClick}) =>
+const ToTheTop: FC<BtnProps> = ({onClick}) =>
     <button id="tothetop" onClick={onClick}></button>
 //* 漢堡包按鈕
-const Hbger: React.FC<BtnProps> = ({ onClick }) =>
+const Hbger: FC<BtnProps> = ({ onClick }) =>
     <button id="nav-toggle" onClick={onClick}>
         <div id="nav-hbg"></div>
     </button>
@@ -30,7 +30,7 @@ function NavLink(props: INavLinkProps) {
         </button>
     )
 }
-const Nav: React.FC = () => {
+const Nav: FC = () => {
     const parList = [
         // title 顯示文字，s2-target 目標id，s2-offset 座標修正
         { title: "關於心晴", s2_target: "intro", s2_offset: "-100", },
@@ -40,16 +40,14 @@ const Nav: React.FC = () => {
         { title: "交通方式", s2_target: "footer", s2_offset: "-1130", },
         { title: "聯絡我們", s2_target: "footer", s2_offset: "0", },
     ];
-    // 建構子
     const [isOpen, setIsOpen] = useState<boolean>(true);
-    // 函數集  auxilary methods
     const handleHbgerClick = () => setIsOpen(!isOpen)
+
     function handleNavLinkClick(i: number) {
         //! 施工中 with scroll to extension
     }
-    function renderAs(start: number, end?: number) {
+    function renderAs(start: number, end = start) {
         const pack = [];
-        if (!end) end = start;
         for (let i = start; i <= end; i++) {
             pack.push(
                 <NavLink
@@ -61,7 +59,6 @@ const Nav: React.FC = () => {
         }
         return (pack);
     }
-    // 渲染
     return (
         <>
             <ToTheTop onClick={handleHbgerClick} />

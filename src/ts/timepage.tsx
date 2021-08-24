@@ -1,52 +1,60 @@
-import React from "react";
+import {CSSProperties} from "react";
 import { H1, H2 } from "./Components/headers"
-// Part I : 標題 using H1
+// Part I : 標題 using component H1
 //* Part II : 時間表
-const colored = [
+// colorOf :門診組合的顏色代碼
+//==== 門診休息 : 0 /=/ 兒童門診 : 1 /=/ 成人門診 : 2 /=/ 自然療法 : 3
+const colorOf = [
     { backgroundColor: "#e6e6e6" },
     { backgroundColor: "#fafad1" },
     { backgroundColor: "#d1eefa" },
     { backgroundColor: "#fccfd6" }
-] as React.CSSProperties[];
-/* about colored :看診組合的顏色代碼
-0 -> closed
-1 -> children
-2 -> adult
-3 -> natural */
+] as CSSProperties[];
+
+//todo shorter 的時間尚未想到實做方式
 const TableItem = (colorCode: number[], isShort: boolean) => {
     const numGrid = colorCode.length;
     const pack = [] as JSX.Element[];
+    // Stage 1 : 依照門診數量生成格數
     for (let i = 0; i < numGrid; i++) {
         pack.push(
-            <div style={colored[colorCode[i]]}></div>
+            <div style={colorOf[colorCode[i]]}></div>
         );
     }
-    const styleWhole: React.CSSProperties = {
+    // Stage 2 : 實現 grid 的格局
+    const styleWhole: CSSProperties = {
         display: "inline-grid",
         gridTemplateColumns: "repeat(" + numGrid + ", 1fr)",
     };
-    if(isShort) styleWhole["gridTemplateRows"] = "repeat(1, 3fr 1fr)";
-    const styleInside: React.CSSProperties = {
-        color: "crimson",
-        backgroundColor: "#e6e6e6",
-        boxShadow: "3px 6px 6px -3px $color-shade inset",
-        gridColumn: "1 / span " + numGrid,
+    // Stage 3 : 若是較短的特殊時段，則再加格局設定
+    if(isShort) {
+        const styleInside: CSSProperties = {
+            color: "crimson",
+            backgroundColor: "#e6e6e6",
+            boxShadow: "3px 6px 6px -3px $color-shade inset",
+            gridColumn: "1 / span " + numGrid,
+        }
+        pack.push(
+            <div style={styleInside}></div>
+        );
+        styleWhole["gridTemplateRows"] = "repeat(1, 3fr 1fr)";
     }
     return (
         <div style={styleWhole}>
             {pack}
-            {isShort ? <div style={styleInside}></div> : <></>}
         </div>
     );
 }
-// 當日的看診組合  -->待連結：後台更新班表的API
+// timeSheet: 當日的看診組合  -->待連結：後台更新班表的API
+//==== 代碼同 colorOf
+//==== 門診休息 : 0 /=/ 兒童門診 : 1 /=/ 成人門診 : 2 /=/ 自然療法 : 3
 const timeSheet: number[][][] = [
     [[1, 2], [0], [1, 2], [2], [0], [3, 2]],
     [[1, 2], [2], [1, 2], [3, 2], [3, 2], [0]],
     [[1, 2], [1, 2], [1, 2], [3, 2], [1, 2, 3], [0]]
 ];
 // 當日是否提早休息-->待連結：後台更新班表的API
-const shortSheet: boolean[][] = [
+const shortSheet = [
     [false, false, false, false, false, false],
     [false, true, false, false, false, false],
     [false, false, false, false, true, false],
@@ -86,16 +94,16 @@ const TimeTable = () => {
 //* Part III : 時間表圖例
 const TableEg = () =>
     <div id="table-eg">
-        <div className="table-eg-btns" style={colored[1]}>
+        <div className="table-eg-btns" style={colorOf[1]}>
             <h4>兒童</h4>
         </div>
-        <div className="table-eg-btns" style={colored[2]}>
+        <div className="table-eg-btns" style={colorOf[2]}>
             <h4>成人</h4>
         </div>
-        <div className="table-eg-btns" style={colored[3]}>
+        <div className="table-eg-btns" style={colorOf[3]}>
             <h4>自然醫學</h4>
         </div>
-        <div className="table-eg-btns" style={colored[0]}>
+        <div className="table-eg-btns" style={colorOf[0]}>
             <h4>休診</h4>
         </div>
     </div>
@@ -146,8 +154,7 @@ const RegisterNote = () =>
 //* Part V : 門診異動
 const TimeAdj = () =>
     <div>
-        <h3 className="title-2">門診異動須知</h3>
-        <hr className="hr-3" />
+        <H2 text="門診異動須知" />
         <dl>
             <dt>110年清明連續假期門診公告</dt>
             <dd>04/03(六) 早診照常看診，</dd>
