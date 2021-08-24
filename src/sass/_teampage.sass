@@ -112,13 +112,10 @@
                 //area 命名
                 & > img
                     grid-area: photos
-
                 & > h2
                     grid-area: names
-
                 & > .team-about
                     grid-area: showcases
-
                 //area 命名 END
             @include rwdFor("tablet")
                 display: grid
@@ -129,10 +126,8 @@
                 //area 命名
                 & > img
                     grid-area: photos
-
                 & > h2
                     grid-area: names
-
                 & > .team-about
                     grid-area: showcases
                 //area 命名 END
@@ -157,6 +152,7 @@
                     display: inline-block
                     border-bottom: 1px solid $color-16
                     box-shadow: 0 9px 5px -6px $color-06
+                    @include font-zh(1.5em, 700)
             // 格局設定 END
             .team-about
                 // card =img, div-h2, div-about}

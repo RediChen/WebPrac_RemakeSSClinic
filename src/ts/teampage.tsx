@@ -1,5 +1,6 @@
 import { dataTeam } from "./dataTeam"
 import { useState } from "react";
+import { H1 } from "./Components/headers";
 
 // 資訊面板
 const CardTitle = (nth: number) => {
@@ -8,12 +9,12 @@ const CardTitle = (nth: number) => {
     return (
         <>
             <img src={memberImg} alt={memberName} title={memberName} />
-            <h2>{memberName}</h2>
+            <div><h2>{memberName}</h2></div>
         </>
     );
 }
 function CardContent(nth: number) {
-    //* 1/2 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
+    //* Part 1/2 包裝「學歷」、「經歷」、「主治」、「專長」四項文本
     const [
         memberDegree,
         memberExperience,
@@ -53,7 +54,7 @@ function CardContent(nth: number) {
             </div>
         );
     }
-    //* 2/2 包裝「醫師的叮嚀」的文本
+    //* Part 2/2 包裝「醫師的叮嚀」的文本
     const memberRemind = [], keyWordRemind = "醫師的叮嚀";
     if (dataTeam[nth][keyWordRemind]) {
         memberRemind.push(
@@ -90,7 +91,7 @@ function TeamPage() {
         setMemberIndex(nth);
     }
     // 按鈕面板
-    // 此函數獨立出去會有技術上的障礙: needs hooks
+    // 此函數獨立出去會有技術上的障礙
     function renderTeamBtns() {
         const pack = [];
         for (let nth = 0; nth < dataTeam.length; nth++) {
@@ -111,10 +112,7 @@ function TeamPage() {
     }
     return (
         <section id="team-page">
-            <header>
-                <h1 className="title-1">醫療團隊</h1>
-                <hr className="hr-1" />
-            </header>
+            <H1 text="醫療團隊" />
             <div id="team-btn-box">
                 {renderTeamBtns()}
             </div>
