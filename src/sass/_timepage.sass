@@ -1,87 +1,11 @@
-//* 表格格局的RWD設定
-@mixin timeTable($leng, $gap)
-    /* $leng 必須輸入偶數 */
-    $leng-2: $leng - 2px
-    $leng-half: $leng / 2
-    $leng-half-2: $leng-half - 2px
-    width: 6.5*$leng + 6*$gap
-    height: 3.5*$leng + 3*$gap
-    display: grid
-    grid-gap: $gap
-    grid-template-columns: $leng-half repeat(6, 1fr)
-    // 框線設定區
-    & > div:nth-child(n + 2)
-        border: 1px solid #55555555
-        box-shadow: 2px 2px 2px $color-shade
-        overflow: hidden
-    // 尺寸設定區：左上格
-    & > div:first-child
-        width: $leng-half-2
-        height: $leng-half-2
-    // 尺寸設定區：主列
-    & > div:nth-child(-n + 7):not(:first-child)
-        width: $leng-2
-        height: $leng-half-2
-        line-height: $leng-half-2
-        background-color: #ffffff88
-    // 尺寸設定區：主欄
-    & > div:nth-child(7n + 8)
-        width: $leng-half-2
-        height: $leng-2
-        background-color: #ffffff88
-        display: flex
-        align-items: center
-    // 尺寸設定區：非主列
-    & > div:nth-child(n + 8):not(:nth-child(7n + 8))
-        width: $leng-2
-        height: $leng-2
+/// 頁面：門診時間
+    結構：
+        _timePage.sass（本檔）
+            _table.sass（表格樣式）
+                _tableGrid.sass （grid）
+                _tableGrid.sass （文字）
+            _tableEg.sass   （圖例樣式）
 //=============================================
-//* 表格文字的RWD設定 
-@mixin timeTableText()
-    @include rwdFor("desktop")
-        // 文字設定區：主列
-        & > div:nth-child(-n + 7):not(:first-child)
-            @include font-zh(1.2em, 700)
-        // 文字設定區：主欄
-        & > div:nth-child(7n + 8)
-            @include font-zh(1em, 300)
-        // 特殊休診時段
-        .tt-closed
-            @include font-zh(1em, 700)
-    @include rwdFor("tablet")
-        // 文字設定區：主列
-        & > div:nth-child(-n + 7):not(:first-child)
-            @include font-zh(0.8em, 500)
-        // 文字設定區：主欄
-        & > div:nth-child(7n + 8)
-            @include font-zh(0.8em, 300)
-        // 特殊休診時段
-        .tt-closed
-            @include font-zh(1em, 700)
-    @include rwdFor("mobile")
-        // 文字設定區：主列
-        & > div:nth-child(-n + 7):not(:first-child)
-            @include font-zh(0.8em, 500)
-        // 文字設定區：主欄
-        & > div:nth-child(7n + 8)
-            @include font-zh(10px, 300)
-        // 特殊休診時段
-        .tt-closed
-            @include font-zh(0.8em, 700)
-//=============================================
-#time-table
-    margin: 80px auto 30px
-    text-align: center
-    @include timeTable(100px, 10px)
-    // 格式設定區
-    @include rwdFor("desktop")
-        @include timeTable(100px, 10px)
-    @include rwdFor("tablet")
-        @include timeTable(80px, 8px)
-    @include rwdFor("mobile")
-        @include timeTable(50px, 6px)
-    //	文字設定區 
-    @include timeTableText()
-    // .tt-deactivate
-    // 只顯示一種顏色時，其他格子的低調色
-    // background-color: hsl(0, 0%, 80%) !important
+@import "./TimePage/_table"
+@import "./TimePage/_tableEg"
+

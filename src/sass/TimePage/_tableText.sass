@@ -1,0 +1,33 @@
+/// 此 mixin 設定門診時間表的文字樣式
+
+@mixin timeTableText()
+    @include rwdFor("desktop")
+        // 文字設定區：主列
+        & > div:nth-child(-n + 7):not(:first-child)
+            @include font-zh(1.2em, 700)
+        // 文字設定區：主欄
+        & > div:nth-child(7n + 8)
+            @include font-zh(1em, 300)
+        // 特殊休診時段
+        .tt-closed
+            @include font-zh(1em, 700)
+    @include rwdFor("tablet")
+        // 文字設定區：主列
+        & > div:nth-child(-n + 7):not(:first-child)
+            @include font-zh(1em, 500)
+        // 文字設定區：主欄
+        & > div:nth-child(7n + 8)
+            @include font-zh(0.8em, 300)
+        // 特殊休診時段
+        .tt-closed
+            @include font-zh(1em, 700)
+    @include rwdFor("mobile")
+        // 文字設定區：主列
+        & > div:nth-child(-n + 7):not(:first-child)
+            @include font-zh(0.8em, 500)
+        // 文字設定區：主欄
+        & > div:nth-child(7n + 8)
+            @include font-zh(10px, 300)
+        // 特殊休診時段
+        .tt-closed
+            @include font-zh(0.8em, 700)

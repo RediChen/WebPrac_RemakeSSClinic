@@ -1,0 +1,19 @@
+/// 此 mixin 設定門診時間表表格的格式
+
+@import "./_tableGrid"
+@import "./_tableText"
+#time-table
+    margin: 80px auto 30px
+    text-align: center
+    // 設定格局
+    @include rwdFor("desktop")
+        @include tableGrid(100px, 10px)
+    @include rwdFor("tablet")
+        @include tableGrid(80px, 8px)
+    @include rwdFor("mobile")
+        @include tableGrid(50px, 6px)
+    //	設定文字
+    @include timeTableText()
+    // .tt-deactivate
+    // 只顯示一種顏色時，其他格子的低調色
+    // background-color: hsl(0, 0%, 80%) !important

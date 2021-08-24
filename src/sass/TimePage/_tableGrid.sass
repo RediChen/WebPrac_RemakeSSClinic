@@ -1,0 +1,39 @@
+/// 此 mixin 設定門診時間表表格的 grid 格式
+    須給定時段格的邊長 $leng，與格間的 $gap
+    其中 $leng 必須為偶數
+
+@mixin tableGrid($leng, $gap)
+    $leng-2: $leng - 2px
+    $leng-half: $leng / 2
+    $leng-half-2: $leng-half - 2px
+    width: 6.5*$leng + 6*$gap
+    height: 3.5*$leng + 3*$gap
+    display: grid
+    grid-gap: $gap
+    grid-template-columns: $leng-half repeat(6, 1fr)
+    // 框線設定區
+    & > div:nth-child(n + 2)
+        border: 1px solid #55555555
+        box-shadow: 2px 2px 2px $color-shade
+        overflow: hidden
+    // 尺寸設定區：左上格
+    & > div:first-child
+        width: $leng-half-2
+        height: $leng-half-2
+    // 尺寸設定區：主列
+    & > div:nth-child(-n + 7):not(:first-child)
+        width: $leng-2
+        height: $leng-half-2
+        line-height: $leng-half-2
+        background-color: #ffffff88
+    // 尺寸設定區：主欄
+    & > div:nth-child(7n + 8)
+        width: $leng-half-2
+        height: $leng-2
+        background-color: #ffffff88
+        display: flex
+        align-items: center
+    // 尺寸設定區：非主列
+    & > div:nth-child(n + 8):not(:nth-child(7n + 8))
+        width: $leng-2
+        height: $leng-2
