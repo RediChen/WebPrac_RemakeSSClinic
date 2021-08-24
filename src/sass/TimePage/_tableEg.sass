@@ -1,0 +1,27 @@
+/// 此 mixin 設定門診時間表圖例的格式
+
+#table-eg
+    display: flex
+    padding: 10px 15%
+    justify-content: space-evenly
+    .table-eg-btns
+        border-radius: 50%
+        box-shadow: 8px 8px 8px $color-shade
+        $leng: 80px;
+        width: $leng
+        cursor: default
+        //RWD：電腦、平板
+        h4
+            @include font-zh(1em, 500)
+            line-height: $leng
+            text-align: center
+            text-shadow: 8px 8px 8px $color-shade
+        //RWD：電腦、平板 END
+        //RWD：手機
+        @include rwdFor("mobile")
+            $leng: 65px
+            height: $leng
+            width: $leng
+            h4
+                @include font-zh(1em, 500)
+                line-height: $leng

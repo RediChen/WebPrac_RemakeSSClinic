@@ -21,20 +21,31 @@ const TableItem = (colorCode: number[], isShort: boolean) => {
             <div style={colored[colorCode[i]]}></div>
         );
     }
+    const styleWhole: React.CSSProperties = {
+        display: "inline-grid",
+        gridTemplateColumns: "repeat(" + numGrid + ", 1fr)",
+    };
+    if(isShort) styleWhole["gridTemplateRows"] = "repeat(1, 3fr 1fr)";
+    const styleInside: React.CSSProperties = {
+        color: "crimson",
+        backgroundColor: "#e6e6e6",
+        boxShadow: "3px 6px 6px -3px $color-shade inset",
+        gridColumn: "1 / span " + numGrid,
+    }
     return (
-        <div>
+        <div style={styleWhole}>
             {pack}
-            {isShort ? <div style={colored[0]}></div> : <></>}
+            {isShort ? <div style={styleInside}></div> : <></>}
         </div>
     );
 }
-// 當日的看診組合  -->長遠目標：後台更新班表的API
+// 當日的看診組合  -->待連結：後台更新班表的API
 const timeSheet: number[][][] = [
     [[1, 2], [0], [1, 2], [2], [0], [3, 2]],
     [[1, 2], [2], [1, 2], [3, 2], [3, 2], [0]],
     [[1, 2], [1, 2], [1, 2], [3, 2], [1, 2, 3], [0]]
 ];
-// 當日是否提早休息-->長遠目標：後台更新班表的API
+// 當日是否提早休息-->待連結：後台更新班表的API
 const shortSheet: boolean[][] = [
     [false, false, false, false, false, false],
     [false, true, false, false, false, false],
@@ -53,9 +64,9 @@ const TimeTable = () => {
             <div>六</div>
         </>
     );
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 0; i < 3; i++) {
         for (let j = 0; j < timeSheet[i].length; j++) {
-            row[i].push(
+            row[i + 1].push(
                 TableItem(timeSheet[i][j], shortSheet[i][j])
             )
         }
@@ -75,16 +86,16 @@ const TimeTable = () => {
 //* Part III : 時間表圖例
 const TableEg = () =>
     <div id="table-eg">
-        <div className="table-eg-btns" data-tt-label="tt-children">
+        <div className="table-eg-btns" style={colored[1]}>
             <h4>兒童</h4>
         </div>
-        <div className="table-eg-btns" data-tt-label="tt-adult">
+        <div className="table-eg-btns" style={colored[2]}>
             <h4>成人</h4>
         </div>
-        <div className="table-eg-btns" data-tt-label="tt-nature">
+        <div className="table-eg-btns" style={colored[3]}>
             <h4>自然醫學</h4>
         </div>
-        <div className="table-eg-btns">
+        <div className="table-eg-btns" style={colored[0]}>
             <h4>休診</h4>
         </div>
     </div>
