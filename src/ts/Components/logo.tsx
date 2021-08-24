@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import Logo32px from "src/assets/favicon/woFrame32px.png";
 import Logo64px from "src/assets/favicon/woFrame64px.png";
 import Logo128px from "src/assets/favicon/woFrame128px.png";
@@ -16,11 +17,15 @@ export default function Logo(props: { size: string }) {
             break;
         default:
             address = "";
-            console.error("輸入的 " + props.size + " px 是未供應的 Logo 尺寸。");
+            console.error("無法供應 " + props.size + " px 的 Logo 尺寸。");
     }
-    //src={`Logo${props.size}px`}
+    // 尺寸在此設定，不過 hover 在 sass 設定
+    const imgStyle: CSSProperties = {
+        height: props.size + "px",
+        width: "auto",
+    }
     return (
         <img className={`logo logo-${props.size}`} src={address}
-            alt="心晴診所 Sunshine Clinic logo" />
+            style={imgStyle} alt="心晴診所 Sunshine Clinic logo" />
     );
 }
