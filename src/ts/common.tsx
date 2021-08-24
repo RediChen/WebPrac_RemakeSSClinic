@@ -1,6 +1,11 @@
+/* 此檔包含:
+    ToTheTop: 回到最上按鈕
+    Hbger: 漢堡包按鈕
+    Nav: 導覽列
+*/ 
 import React from "react";
 import { useState } from "react";
-import Logo from "./logo"
+import Logo from "./Components/logo"
 
 type BtnProps = { onClick: () => void }
 //* 回到最上按鈕
