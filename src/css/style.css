@@ -78,7 +78,6 @@
   border-color: #f07ab5;
 }
 
-/* 包含 body bg, logo, hbger, nav, to-the-top  */
 * {
   margin: 0;
   padding: 0;
@@ -901,6 +900,9 @@ nav .nav-link:active {
   border-bottom: 1px solid #6e0837;
   -webkit-box-shadow: 0 9px 5px -6px #55555555;
           box-shadow: 0 9px 5px -6px #55555555;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 1.5em;
 }
 
 #team-page #team-card-wrap .team-card .team-about {
@@ -939,55 +941,10 @@ nav .nav-link:active {
 #time-table {
   margin: 80px auto 30px;
   text-align: center;
-  /* $leng 必須輸入偶數 */
-  width: 710px;
-  height: 380px;
-  display: -ms-grid;
-  display: grid;
-  grid-gap: 10px;
-  -ms-grid-columns: 50px (1fr)[6];
-      grid-template-columns: 50px repeat(6, 1fr);
-}
-
-#time-table > div:nth-child(n + 2) {
-  border: 1px solid #55555555;
-  -webkit-box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
-          box-shadow: 2px 2px 2px rgba(153, 153, 153, 0.3);
-  overflow: hidden;
-}
-
-#time-table > div:first-child {
-  width: 48px;
-  height: 48px;
-}
-
-#time-table > div:nth-child(-n + 7):not(:first-child) {
-  width: 98px;
-  height: 48px;
-  line-height: 48px;
-  background-color: #ffffff88;
-}
-
-#time-table > div:nth-child(7n + 8) {
-  width: 48px;
-  height: 98px;
-  background-color: #ffffff88;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#time-table > div:nth-child(n + 8):not(:nth-child(7n + 8)) {
-  width: 98px;
-  height: 98px;
 }
 
 @media screen and (min-width: 1025px) {
   #time-table {
-    /* $leng 必須輸入偶數 */
     width: 710px;
     height: 380px;
     display: -ms-grid;
@@ -1031,7 +988,6 @@ nav .nav-link:active {
 
 @media screen and (max-width: 1024px) {
   #time-table {
-    /* $leng 必須輸入偶數 */
     width: 568px;
     height: 304px;
     display: -ms-grid;
@@ -1075,7 +1031,6 @@ nav .nav-link:active {
 
 @media screen and (max-width: 676px) {
   #time-table {
-    /* $leng 必須輸入偶數 */
     width: 361px;
     height: 193px;
     display: -ms-grid;
@@ -1139,7 +1094,7 @@ nav .nav-link:active {
   #time-table > div:nth-child(-n + 7):not(:first-child) {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    font-size: 0.8em;
+    font-size: 1em;
   }
   #time-table > div:nth-child(7n + 8) {
     font-family: "Noto Serif TC", serif;
@@ -1168,6 +1123,46 @@ nav .nav-link:active {
     font-family: "Noto Serif TC", serif;
     font-weight: 700;
     font-size: 0.8em;
+  }
+}
+
+#table-eg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 15%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#table-eg .table-eg-btns {
+  border-radius: 50%;
+  -webkit-box-shadow: 8px 8px 8px rgba(153, 153, 153, 0.3);
+          box-shadow: 8px 8px 8px rgba(153, 153, 153, 0.3);
+  width: 80px;
+  cursor: default;
+}
+
+#table-eg .table-eg-btns h4 {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 80px;
+  text-align: center;
+  text-shadow: 8px 8px 8px rgba(153, 153, 153, 0.3);
+}
+
+@media screen and (max-width: 676px) {
+  #table-eg .table-eg-btns {
+    height: 65px;
+    width: 65px;
+  }
+  #table-eg .table-eg-btns h4 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 65px;
   }
 }
 
