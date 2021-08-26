@@ -1,17 +1,15 @@
 interface IDataFormat {
-    member: {
-        [key: string]: string | string[] | undefined
-        "name": string
-        "imgAddress": string
-        "學歷": string[]
-        "經歷": string[]
-        "主治"?: string[]
-        "專長"?: string[]
-        "醫師的叮嚀"?: string
-    }[]
+    [key: string]: string | string[] | undefined
+    "name": string
+    "imgAddress": string
+    "學歷": string[]
+    "經歷": string[]
+    "主治"?: string[]
+    "專長"?: string[]
+    "醫師的叮嚀"?: string
     /*  p.s. 順序是按實際想要的排版順序，而非按照專業別 */
 }
-export const dataTeam: IDataFormat["member"] = [
+export const dataTeam: IDataFormat[] = [
     /* 0: 林為文總院長 */
     {
         "name": "林為文總院長",
